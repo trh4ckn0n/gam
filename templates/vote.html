@@ -11,7 +11,7 @@
         <h1>Votez pour votre selfie préféré !</h1>
         {% for selfie in selfies %}
             <div class="selfie">
-                <img src="{{ url_for('static', filename='uploads/' + selfie) }}" alt="Selfie" width="200">
+                <img src="{{ url_for('uploaded_file', filename=selfie) }}" alt="Selfie" width="200">
                 <form action="/vote_selfie/{{ selfie }}" method="POST">
                     <button type="submit">Voter pour ce selfie</button>
                 </form>
