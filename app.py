@@ -22,12 +22,15 @@ def index():
 @app.route('/vote')
 def vote():
     selfies = os.listdir(app.config['UPLOAD_FOLDER'])
-    return render_template('vote.html', selfies=selfies)
+    # Ne garder que les fichiers valides (images)
+    selfies = [selfie for selfie in selfies if allowed_file(selfie)]
+    return render_template('vote.html', selfies=selfelfies)
 
 # Page d'administration - gérer les selfies et voir les votes
 @app.route('/admin')
 def admin():
     selfies = os.listdir(app.config['UPLOAD_FOLDER'])
+    selfies = [selfie for selfie in selfies if allowed_file(selfie)]  # Filtrer uniquement les fichiers valides
     return render_template('admin.html', selfies=selfies, votes=app.config['VOTES'])
 
 # Gérer l'upload des selfies
