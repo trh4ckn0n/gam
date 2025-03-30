@@ -12,7 +12,7 @@
         <h3>Selfies téléchargés :</h3>
         {% for selfie in selfies %}
             <div class="selfie">
-                <img src="{{ url_for('static', filename='uploads/' + selfie) }}" alt="Selfie" width="200">
+                <img src="{{ url_for('uploaded_file', filename=selfie) }}" alt="Selfie" width="200">
                 <p>Votes: {{ votes.get(selfie, 0) }}</p>
             </div>
         {% endfor %}
