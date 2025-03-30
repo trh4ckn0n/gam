@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Selfies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Participez au jeu en envoyant votre selfie !</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="selfie">Votre Selfie :</label>
+            <input type="file" name="selfie" id="selfie" required>
+            <button type="submit">Envoyer</button>
+        </form>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+        <br><br>
+        <a href="/vote">Voir les selfies et voter</a>
+        <br>
+        <a href="/admin">Page d'administration</a>
+    </div>
+</body>
+</html>
