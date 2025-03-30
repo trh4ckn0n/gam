@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votez pour votre selfie préféré</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Votez pour votre selfie préféré !</h1>
+        {% for selfie in selfies %}
+            <div class="selfie">
+                <img src="{{ url_for('static', filename='uploads/' + selfie) }}" alt="Selfie" width="200">
+                <form action="/vote_selfie/{{ selfie }}" method="POST">
+                    <button type="submit">Voter pour ce selfie</button>
+                </form>
+            </div>
+        {% endfor %}
+        <br>
+        <a href="/">Retour à l'accueil</a>
+    </div>
+</body>
+</html>
